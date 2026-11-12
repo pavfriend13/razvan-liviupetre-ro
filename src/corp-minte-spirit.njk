@@ -1,0 +1,41 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /corp-minte-spirit/
+eleventyComputed:
+  title: "{{ filosofie.titlu }}"
+  seoTitle: "{{ filosofie.seo_titlu }}"
+  seoDescription: "{{ filosofie.seo_descriere }}"
+  ogImage: "{{ filosofie.imagine }}"
+---
+{% from "macros.njk" import pageHead, icon, next %}
+{{ pageHead(filosofie.titlu, filosofie.intro, filosofie.imagine, filosofie.imagine_alt) }}
+
+<!-- Cele trei dimensiuni -->
+{%- for d in filosofie.dimensiuni %}
+<section class="sec dim{% if loop.index == 2 %} sec--paper2{% endif %}" id="{{ d.nume | slugify }}" aria-labelledby="dim-{{ loop.index }}">
+  <div class="wrap duo{% if loop.index == 2 %} duo--rev{% endif %}">
+    <figure class="duo__img duo__img--wide" data-reveal><img src="{{ d.imagine }}" alt="{{ d.imagine_alt }}" width="1600" height="1000" loading="lazy"></figure>
+    <div class="duo__body">
+      <div class="dim__head">{{ icon(d.nume) }}<h2 class="h-section" id="dim-{{ loop.index }}">{{ d.nume }}</h2></div>
+      <p class="lead">{{ d.rezumat }}</p>
+      <div class="prose">{{ d.text | md | safe }}</div>
+    </div>
+  </div>
+</section>
+{%- endfor %}
+
+<!-- Interdependența -->
+<section class="sec sec--dark" aria-labelledby="interdep">
+  <div class="wrap interdep">
+    <div class="interdep__mark" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><circle cx="70" cy="80" r="52"/><circle cx="130" cy="80" r="52"/><circle cx="100" cy="132" r="52"/></svg>
+    </div>
+    <div>
+      <h2 class="h-section" id="interdep" data-reveal>{{ filosofie.interdependenta.titlu }}</h2>
+      <div class="prose prose--dark">{{ filosofie.interdependenta.text | md | safe }}</div>
+    </div>
+  </div>
+</section>
+
+{{ next("/articole/", "Articole despre filosofie și educație") }}

@@ -1,0 +1,37 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /galerie/
+eleventyComputed:
+  title: "{{ galerie.titlu }}"
+  seoTitle: "{{ galerie.seo_titlu }}"
+  seoDescription: "{{ galerie.seo_descriere }}"
+---
+{% from "macros.njk" import pageHead %}
+{{ pageHead(galerie.titlu, galerie.intro) }}
+
+<section class="sec gallery-page" aria-label="Fotografii">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Filtrează după categorie" data-filter-group="galerie">
+      <button type="button" class="chip" aria-pressed="true" data-filter="">Toate</button>
+      {%- for c in galerie.categorii %}
+      <button type="button" class="chip" aria-pressed="false" data-filter="{{ c }}">{{ c }}</button>
+      {%- endfor %}
+    </div>
+    <p class="sr-only" id="galerie-status" role="status"></p>
+
+    <ul class="ggrid" id="galerie-grid">
+      {%- for p in galerie.poze %}
+      <li data-categorie="{{ p.categorie }}">
+        <button type="button" class="ggrid__btn" data-full="{{ p.imagine }}" data-alt="{{ p.alt }}">
+          <img src="{{ p.imagine }}" alt="{{ p.alt }}" loading="lazy" width="800" height="600">
+          <span class="ggrid__cat">{{ p.categorie }}</span>
+        </button>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="empty" id="galerie-gol" hidden>Nu există încă fotografii în această categorie.</p>
+  </div>
+</section>
+
+{% include "partials/lightbox.njk" %}

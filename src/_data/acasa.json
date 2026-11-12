@@ -1,0 +1,56 @@
+{
+  "seo_titlu": "Răzvan-Liviu Petre | Sensei, Combat și Karate-do",
+  "seo_descriere": "Sensei, conferențiar universitar doctor și specialist în Combat și Karate-do. O abordare a artelor marțiale construită în jurul filosofiei Corp. Minte. Spirit.",
+  "hero": {
+    "imagine": "/assets/img/hero-lovitura.webp",
+    "imagine_alt": "Senseiul Răzvan-Liviu Petre executând o lovitură laterală din săritură în dojo",
+    "subtitlu": "Sensei | Conferențiar universitar doctor | Combat & Karate-do",
+    "concept": "Corp. Minte. Spirit.",
+    "intro": "Artele marțiale înseamnă mai mult decât tehnică și performanță. Ele reprezintă o cale de educație, disciplină, autocunoaștere și dezvoltare armonioasă a individului.",
+    "buton_1": "Descoperă filosofia",
+    "buton_2": "Despre Sensei",
+    "banda": [
+      { "text": "Corp" },
+      { "text": "Minte" },
+      { "text": "Spirit" },
+      { "text": "Combat" },
+      { "text": "Karate-do" },
+      { "text": "Autoapărare" },
+      { "text": "Educație" },
+      { "text": "Cercetare" }
+    ]
+  },
+  "despre": {
+    "titlu": "Un drum între tatami și amfiteatru",
+    "text": "Răzvan-Liviu Petre îmbină experiența practică în artele marțiale cu activitatea universitară, cercetarea științifică și studiul filosofiei. Este conferențiar universitar doctor la UNEFS București, președinte al Federației Române de Combat și profesor-antrenor de Karate-do din 2002.",
+    "imagine": "/assets/img/portret-birou.jpg",
+    "imagine_alt": "Portret al lui Răzvan-Liviu Petre în fața unei biblioteci",
+    "buton": "Descoperă parcursul profesional"
+  },
+  "cms": {
+    "titlu": "Corp. Minte. Spirit.",
+    "intro": "Trei dimensiuni ale aceleiași practici. Antrenamentul nu se oprește la mișcare: el formează felul în care gândim și felul în care ne raportăm la ceilalți.",
+    "buton": "Citește despre filosofie"
+  },
+  "programe": {
+    "titlu": "Programe",
+    "intro": "Două programe construite pe aceleași principii: tehnică corectă, disciplină și progres în ritmul fiecărei persoane."
+  },
+  "realizari": {
+    "titlu": "Experiență și realizări",
+    "intro": "O selecție din activitatea academică, sportivă și instituțională. Detaliile complete se află pe pagina dedicată.",
+    "puncte": [
+      { "titlu": "Activitate universitară", "text": "Conferențiar universitar doctor la Universitatea Națională de Educație Fizică și Sport din București, unde predă din 2003 etică și deontologie, combat, arte marțiale și karate-do." },
+      { "titlu": "Federația Română de Combat", "text": "Președinte al Federației Române de Combat din 2014." },
+      { "titlu": "Calificări în arte marțiale", "text": "7 DAN Combat și Karate-do, 5 DAN Karate-do Shotokan, 4 DAN Karate-do Shito-Ryu. Antrenor Maestru (Categoria I) la Karate." },
+      { "titlu": "Formarea sportivilor", "text": "Peste 3000 de sportivi și zeci de instructori naționali formați. Coordonator al echipei de karate a UNEFS, de 20 de ori campioană națională universitară." },
+      { "titlu": "Publicații și cercetare", "text": "Autor a trei cărți și coautor a încă trei, inclusiv „Combat Karate-Do” (2014) și „Etică, integritate și deontologie în domeniul științei sportului și educației fizice” (2022). Studii postdoctorale la Academia Română." }
+    ],
+    "buton": "Vezi afilierile și realizările"
+  },
+  "articole_titlu": "Articole recente",
+  "contact": {
+    "text": "Descoperiți o abordare a artelor marțiale în care educația, disciplina și dezvoltarea personală se completează reciproc.",
+    "buton": "Luați legătura cu Senseiul"
+  }
+}

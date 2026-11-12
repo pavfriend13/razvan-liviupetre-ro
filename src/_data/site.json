@@ -1,0 +1,24 @@
+{
+  "nume": "Răzvan-Liviu Petre",
+  "nume_complet": "Conf. univ. dr. Răzvan-Liviu Petre",
+  "url": "https://razvan-liviupetre.ro",
+  "limba": "ro",
+  "descriere_seo": "Website-ul oficial al Senseiului Răzvan-Liviu Petre, conferențiar universitar doctor și specialist în Combat și Karate-do. Corp. Minte. Spirit.",
+  "imagine_social": "/assets/img/hero-lovitura.webp",
+  "logo": "/assets/img/logo-frc.jpg",
+  "logo_alt": "Federația Română de Combat",
+  "autor_implicit": "Răzvan-Liviu Petre",
+  "contact": {
+    "telefon": "0723.248.285",
+    "email": "petrerazvan2000@yahoo.com",
+    "locatie_nume": "WeHeal Medical",
+    "adresa": "Strada Sfântul Elefterie nr. 47–49, etajul 1",
+    "zona": "Cotroceni, București",
+    "indicatii": "- **Metrou Eroilor 2** (Magistrala 1/3/5): 8 minute de mers pe jos\n- **Autobuz Pod Eroilor** (liniile 104, 122, 137, 226): 8 minute de mers pe jos\n- **Autobuz Facultatea de Medicină** (liniile 122, 123, 137, 196, 226, 336): 9 minute de mers pe jos\n- **Autobuz Spitalul Universitar** (liniile 122, 123, 137, 336): 8 minute de mers pe jos\n- **Autobuz Carol Davila** (liniile 122, 226, 368, 690, 696): 5 minute de mers pe jos\n\n**Reper:** centrul se află la 5 minute de Biserica Sf. Elefterie, în incinta Centrului Comercial Piața Cotroceni."
+  },
+  "retele": [
+    { "nume": "Facebook", "link": "" },
+    { "nume": "Instagram", "link": "" },
+    { "nume": "TikTok", "link": "" }
+  ]
+}

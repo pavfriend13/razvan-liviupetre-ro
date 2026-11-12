@@ -1,0 +1,57 @@
+---
+layout: base.njk
+darkHero: true
+eleventyComputed:
+  seoTitle: "{{ title }}"
+  seoDescription: "{{ rezumat }}"
+  ogImage: "{{ imagine }}"
+---
+{% from "macros.njk" import pageHead %}
+{{ pageHead(title, rezumat, imagine, imagine_alt) }}
+
+{%- if not exemplu %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": title,
+  "startDate": page.date | iso,
+  "location": { "@type": "Place", "name": locatie, "address": locatie },
+  "image": site.url + imagine,
+  "description": rezumat,
+  "organizer": { "@type": "Person", "name": site.nume }
+} | json | safe }}</script>
+{%- endif %}
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <ol><li><a href="/">Acasă</a></li><li><a href="/evenimente/">Evenimente</a></li><li aria-current="page">{{ title | plain }}</li></ol>
+</nav>
+
+<section class="sec sec--tight">
+  <div class="wrap pdetail">
+    <div class="pdetail__main">
+      <div class="prose">{{ content | safe }}</div>
+    </div>
+    <aside class="pdetail__side" aria-label="Detalii eveniment">
+      <dl class="facts">
+        <dt>Data</dt><dd><time datetime="{{ page.date | iso }}">{{ page.date | dataRo }}</time>{% if ora %}, ora {{ ora }}{% endif %}</dd>
+        {% if locatie %}<dt>Locația</dt><dd>{{ locatie | todo | safe }}</dd>{% endif %}
+      </dl>
+      {% if link %}<a class="btn btn--red btn--block" href="{{ link }}" target="_blank" rel="noopener">Detalii suplimentare</a>{% endif %}
+      <a class="btn btn--dark btn--block" href="/contact/">Întrebări despre eveniment</a>
+    </aside>
+  </div>
+</section>
+
+{%- if galerie and galerie.length %}
+<section class="sec sec--paper2" aria-labelledby="ev-galerie">
+  <div class="wrap">
+    <h2 class="h-sub" id="ev-galerie">Galerie foto</h2>
+    <ul class="ggrid">
+      {%- for p in galerie %}
+      <li><button type="button" class="ggrid__btn" data-full="{{ p.imagine }}" data-alt="{{ p.alt }}"><img src="{{ p.imagine }}" alt="{{ p.alt }}" loading="lazy" width="800" height="600"></button></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% include "partials/lightbox.njk" %}
+{%- endif %}

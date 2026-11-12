@@ -1,0 +1,33 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /evenimente/
+title: Evenimente
+seoTitle: "Evenimente: seminare, competiții și conferințe"
+seoDescription: "Evenimentele viitoare și trecute ale Senseiului Răzvan-Liviu Petre: seminare, stagii de pregătire, competiții și conferințe."
+---
+{% from "macros.njk" import pageHead, eventCard %}
+{{ pageHead("Evenimente", "Seminare, stagii de pregătire, competiții și conferințe.") }}
+
+{%- set viitoare = collections.evenimente | upcoming(build.acum) %}
+{%- set trecute = collections.evenimente | past(build.acum) %}
+
+<section class="sec" aria-labelledby="ev-viitoare">
+  <div class="wrap">
+    <h2 class="h-sub" id="ev-viitoare">Evenimente viitoare</h2>
+    <div class="ecards" data-ev-list="viitoare">
+      {%- for e in viitoare %}{{ eventCard(e) }}{% endfor %}
+    </div>
+    <p class="empty" data-ev-empty="viitoare"{% if viitoare.length %} hidden{% endif %}>Nu există evenimente programate în acest moment. Reveniți în curând.</p>
+  </div>
+</section>
+
+<section class="sec sec--paper2" aria-labelledby="ev-trecute">
+  <div class="wrap">
+    <h2 class="h-sub" id="ev-trecute">Evenimente trecute</h2>
+    <div class="ecards" data-ev-list="trecute">
+      {%- for e in trecute %}{{ eventCard(e) }}{% endfor %}
+    </div>
+    <p class="empty" data-ev-empty="trecute"{% if trecute.length %} hidden{% endif %}>Nu există încă evenimente trecute.</p>
+  </div>
+</section>

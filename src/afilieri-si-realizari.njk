@@ -1,0 +1,38 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /afilieri-si-realizari/
+eleventyComputed:
+  title: "{{ realizari.titlu }}"
+  seoTitle: "{{ realizari.seo_titlu }}"
+  seoDescription: "{{ realizari.seo_descriere }}"
+---
+{% from "macros.njk" import pageHead, next %}
+{{ pageHead(realizari.titlu, realizari.intro) }}
+
+<nav class="wrap toc toc--bar" aria-label="Categorii">
+  {%- for c in realizari.categorii %}<a href="#cat-{{ loop.index }}">{{ c.titlu }}</a>{% endfor %}
+</nav>
+
+{%- for c in realizari.categorii %}
+<section class="sec{% if loop.index is even %} sec--paper2{% endif %}" id="cat-{{ loop.index }}" aria-labelledby="cat-t-{{ loop.index }}">
+  <div class="wrap achv">
+    <h2 class="h-sub achv__title" id="cat-t-{{ loop.index }}">{{ c.titlu }}</h2>
+    <ul class="achv__list">
+      {%- for e in c.elemente %}
+      <li class="achv__item">
+        {%- if e.logo %}<img class="achv__logo" src="{{ e.logo }}" alt="" width="64" height="64" loading="lazy">{% else %}<span class="achv__logo achv__logo--empty" aria-hidden="true"></span>{% endif %}
+        <div>
+          <h3>{{ e.titlu | todo | safe }}</h3>
+          {% if e.detalii %}<p>{{ e.detalii | todo | safe }}</p>{% endif %}
+          {% if e.link %}<a class="link" href="{{ e.link }}" rel="noopener" target="_blank">Site oficial<span class="sr-only">: {{ e.titlu }} (se deschide într-o filă nouă)</span></a>{% endif %}
+        </div>
+        {% if e.an %}<p class="achv__year">{{ e.an | todo | safe }}</p>{% endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endfor %}
+
+{{ next("/contact/", "Luați legătura cu Senseiul") }}

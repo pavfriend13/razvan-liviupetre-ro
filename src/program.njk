@@ -1,0 +1,43 @@
+---
+layout: base.njk
+darkHero: true
+pagination:
+  data: programe.lista
+  size: 1
+  alias: program
+  addAllPagesToCollections: true
+permalink: "/programe/{{ program.slug }}/"
+eleventyComputed:
+  title: "{{ program.nume }}"
+  seoTitle: "{{ program.nume }}"
+  seoDescription: "{{ program.seo_descriere or program.rezumat }}"
+  ogImage: "{{ program.imagine }}"
+---
+{% from "macros.njk" import pageHead, next %}
+{{ pageHead(program.nume, program.rezumat, program.imagine, program.imagine_alt) }}
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <ol><li><a href="/">Acasă</a></li><li><a href="/programe/">Programe</a></li><li aria-current="page">{{ program.nume }}</li></ol>
+</nav>
+
+<section class="sec sec--tight" aria-labelledby="p-desc">
+  <div class="wrap pdetail">
+    <div class="pdetail__main">
+      <h2 class="h-sub" id="p-desc">Despre program</h2>
+      <div class="prose">{{ program.descriere | md | safe }}</div>
+    </div>
+    <aside class="pdetail__side">
+      <h2 class="h-mini">{{ program.public_titlu }}</h2>
+      <ul class="ticks">{% for x in program.public %}<li>{{ x.text }}</li>{% endfor %}</ul>
+      <h2 class="h-mini">{{ program.accente_titlu }}</h2>
+      <ul class="ticks">{% for x in program.accente %}<li>{{ x.text }}</li>{% endfor %}</ul>
+      <a class="btn btn--red btn--block" href="/contact/?program={{ program.slug }}">{{ programe.buton_contact }}</a>
+    </aside>
+  </div>
+</section>
+
+{% include "partials/locatie.njk" %}
+
+{%- set altul = null %}
+{%- for p in programe.lista %}{% if p.slug != program.slug %}{% set altul = p %}{% endif %}{% endfor %}
+{%- if altul %}{{ next("/programe/" + altul.slug + "/", altul.nume, "Celălalt program") }}{% endif %}

@@ -1,0 +1,64 @@
+---
+layout: base.njk
+bodyClass: page-article
+ogType: article
+eleventyComputed:
+  seoTitle: "{{ title }}"
+  seoDescription: "{{ seo_descriere or rezumat }}"
+  ogImage: "{{ imagine }}"
+  schema:
+    "@context": "https://schema.org"
+    "@type": "BlogPosting"
+    headline: "{{ title }}"
+    datePublished: "{{ page.date | iso }}"
+    image: "{{ site.url }}{{ imagine }}"
+    author:
+      "@type": "Person"
+      name: "{{ autor }}"
+    articleSection: "{{ categorie }}"
+    mainEntityOfPage: "{{ site.url }}{{ page.url }}"
+---
+{% from "macros.njk" import articleCard %}
+{%- set shareUrl = page.url | absUrl(site.url) %}
+<article class="article">
+  <header class="article__head">
+    <div class="article__wrap">
+      <nav class="crumbs crumbs--dark" aria-label="Breadcrumb">
+        <ol><li><a href="/">Acasă</a></li><li><a href="/articole/">Articole</a></li><li><a href="/articole/?categorie={{ categorie | urlencode }}">{{ categorie }}</a></li></ol>
+      </nav>
+      <h1>{{ title | todo | safe }}</h1>
+      <p class="article__meta">
+        <span>{{ autor }}</span>
+        <time datetime="{{ page.date | iso }}">{{ page.date | dataRo }}</time>
+        <a href="/articole/?categorie={{ categorie | urlencode }}">{{ categorie }}</a>
+      </p>
+    </div>
+  </header>
+
+  <div class="article__wrap">
+    {%- if imagine %}
+    <figure class="article__cover"><img src="{{ imagine }}" alt="{{ imagine_alt }}" width="1600" height="900"></figure>
+    {%- endif %}
+    <div class="prose">{{ content | safe }}</div>
+
+    <aside class="share" aria-label="Distribuiți articolul">
+      <p>Distribuiți articolul:</p>
+      <ul>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl | urlencode }}" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shareUrl | urlencode }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://wa.me/?text={{ (title | plain + ' ' + shareUrl) | urlencode }}" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><button type="button" class="share__copy" data-url="{{ shareUrl }}">Copiați linkul</button></li>
+      </ul>
+    </aside>
+  </div>
+</article>
+
+{%- set similare = collections.articole | related(page.url, categorie, 3) %}
+{%- if similare.length %}
+<section class="sec sec--paper2" aria-labelledby="similare">
+  <div class="wrap">
+    <h2 class="h-sub" id="similare">Articole similare</h2>
+    <div class="cards">{% for a in similare %}{{ articleCard(a) }}{% endfor %}</div>
+  </div>
+</section>
+{%- endif %}

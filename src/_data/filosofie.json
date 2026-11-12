@@ -1,0 +1,35 @@
+{
+  "seo_titlu": "Corp. Minte. Spirit. Filosofia Senseiului Răzvan-Liviu Petre",
+  "seo_descriere": "Artele marțiale ca instrument de educație: dezvoltarea corpului, a minții și a spiritului, într-o abordare integrată a individului.",
+  "titlu": "Corp. Minte. Spirit.",
+  "intro": "Artele marțiale reprezintă mai mult decât tehnici de luptă. Ele sunt un instrument de educație, disciplină, autocunoaștere și responsabilitate. Filosofia Corp–Minte–Spirit privește omul ca pe un întreg: progresul într-o dimensiune îl susține pe cel din celelalte două.",
+  "imagine": "/assets/img/kata-bo.jpg",
+  "imagine_alt": "Senseiul Petre în poziție de gardă, cu un bo, în dojo",
+  "dimensiuni": [
+    {
+      "nume": "Corp",
+      "rezumat": "Pregătire fizică, coordonare, tehnică, mobilitate și disciplină.",
+      "text": "Corpul este punctul de plecare. Prin antrenament constant se dezvoltă forța, mobilitatea, coordonarea și precizia tehnică. Pregătirea fizică susține sănătatea pe termen lung, iar repetarea atentă a fiecărei tehnici formează obiceiul lucrului bine făcut.",
+      "imagine": "/assets/img/hero-salt.jpg",
+      "imagine_alt": "Lovitură din săritură executată de Senseiul Petre"
+    },
+    {
+      "nume": "Minte",
+      "rezumat": "Concentrare, autocontrol, perseverență, învățare și claritate.",
+      "text": "Mintea se antrenează odată cu corpul. Fiecare exercițiu cere atenție, iar fiecare greșeală devine o ocazie de învățare. Practicantul își dezvoltă concentrarea, autocontrolul și capacitatea de adaptare, calități utile și în afara sălii de antrenament.",
+      "imagine": "/assets/img/studii-prezentare.jpg",
+      "imagine_alt": "Senseiul Petre susținând o prezentare academică"
+    },
+    {
+      "nume": "Spirit",
+      "rezumat": "Respect, responsabilitate, valori morale, echilibru și filosofie.",
+      "text": "Spiritul dă sens practicii. Respectul față de partener, responsabilitatea pentru propriile acțiuni, echilibrul interior și nonviolența sunt valori care transformă antrenamentul într-o cale de dezvoltare personală.",
+      "imagine": "/assets/img/presedinte-frc.jpg",
+      "imagine_alt": "Practicanți în seiza, în liniște, la începutul antrenamentului"
+    }
+  ],
+  "interdependenta": {
+    "titlu": "O singură practică, trei dimensiuni",
+    "text": "Cele trei dimensiuni nu se dezvoltă separat. Un corp pregătit fără o minte disciplinată poate deveni periculos. O minte ascuțită fără valori își pierde direcția. Iar valorile rămân simple intenții dacă nu sunt puse în practică, zi de zi, prin efort.\n\nDe aceea, în fiecare antrenament, tehnica, atenția și respectul sunt lucrate împreună. Aceasta este abordarea integrată pe care o propune Senseiul Răzvan-Liviu Petre."
+  }
+}

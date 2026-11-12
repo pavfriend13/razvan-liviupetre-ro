@@ -1,0 +1,30 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /programe/
+eleventyComputed:
+  title: "{{ programe.titlu }}"
+  seoTitle: "{{ programe.seo_titlu }}"
+  seoDescription: "{{ programe.seo_descriere }}"
+---
+{% from "macros.njk" import pageHead %}
+{{ pageHead(programe.titlu, programe.intro) }}
+
+<section class="sec" aria-label="Lista programelor">
+  <div class="wrap">
+    {%- for p in programe.lista %}
+    <article class="prog{% if loop.index is even %} prog--rev{% endif %}">
+      <figure class="prog__img" data-reveal><img src="{{ p.imagine }}" alt="{{ p.imagine_alt }}" width="1200" height="900" loading="lazy"></figure>
+      <div class="prog__body">
+        <h2 class="h-section">{{ p.nume }}</h2>
+        <p class="lead">{{ p.rezumat }}</p>
+        <h3 class="h-mini">{{ p.public_titlu }}</h3>
+        <ul class="ticks">{% for x in p.public %}<li>{{ x.text }}</li>{% endfor %}</ul>
+        <a class="btn btn--dark" href="/programe/{{ p.slug }}/">Descoperă programul<span class="sr-only">: {{ p.nume }}</span></a>
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+</section>
+
+{% include "partials/locatie.njk" %}

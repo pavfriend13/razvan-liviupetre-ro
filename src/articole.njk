@@ -1,0 +1,37 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /articole/
+title: Articole
+seoTitle: "Articole despre arte marțiale, filosofie și educație"
+seoDescription: "Articole ale Senseiului Răzvan-Liviu Petre despre filosofie și arte marțiale, Combat și Karate-do, educație, dezvoltare personală și cercetare."
+---
+{% from "macros.njk" import pageHead, articleCard %}
+{{ pageHead("Articole", "Despre arte marțiale, filosofie, educație și dezvoltare personală.") }}
+
+<section class="sec" aria-label="Lista articolelor">
+  <div class="wrap">
+    <div class="tools">
+      <div class="search">
+        <label for="cauta">Căutați în articole</label>
+        <input id="cauta" type="search" placeholder="De exemplu: disciplină" autocomplete="off">
+      </div>
+      <div class="filters" role="group" aria-label="Filtrează după categorie" data-filter-group="articole">
+        <button type="button" class="chip" aria-pressed="true" data-filter="">Toate</button>
+        {%- for c in categorii %}
+        <button type="button" class="chip" aria-pressed="false" data-filter="{{ c }}">{{ c }}</button>
+        {%- endfor %}
+      </div>
+    </div>
+    <p class="results" id="articole-status" role="status" aria-live="polite"></p>
+
+    {%- if collections.articole.length %}
+    <div class="cards cards--list" id="articole-grid">
+      {%- for a in collections.articole %}{{ articleCard(a, "h2") }}{% endfor %}
+    </div>
+    <p class="empty" id="articole-gol" hidden>Niciun articol nu corespunde căutării. Încercați alt cuvânt sau altă categorie.</p>
+    {%- else %}
+    <p class="empty">Primele articole vor fi publicate în curând.</p>
+    {%- endif %}
+  </div>
+</section>

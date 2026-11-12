@@ -1,0 +1,17 @@
+{
+  "seo_titlu": "Galerie foto",
+  "seo_descriere": "Fotografii de la antrenamente, competiții, seminare, conferințe și evenimente cu Senseiul Răzvan-Liviu Petre.",
+  "titlu": "Galerie",
+  "intro": "Momente din antrenamente, competiții, seminare și activitatea academică.",
+  "categorii": ["Antrenamente", "Competiții", "Seminare", "Conferințe", "Activitate academică", "Evenimente"],
+  "poze": [
+    { "imagine": "/assets/img/hero-salt.jpg", "alt": "Lovitură din săritură executată în dojo", "categorie": "Antrenamente" },
+    { "imagine": "/assets/img/kata-bo.jpg", "alt": "Poziție de gardă cu bo în dojo", "categorie": "Antrenamente" },
+    { "imagine": "/assets/img/echipa-centuri-negre.jpg", "alt": "Grup de practicanți cu centura neagră", "categorie": "Antrenamente" },
+    { "imagine": "/assets/img/presedinte-frc.jpg", "alt": "Practicanți în seiza în fața bannerului Federației Române de Combat", "categorie": "Seminare" },
+    { "imagine": "/assets/img/campionat-national-2024.jpg", "alt": "Discurs la Campionatul Național de Karate 2024", "categorie": "Competiții" },
+    { "imagine": "/assets/img/studii-prezentare.jpg", "alt": "Prezentarea unei lucrări de cercetare despre karate-do", "categorie": "Activitate academică" },
+    { "imagine": "/assets/img/trofeu.jpg", "alt": "Senseiul Petre ținând o cupă", "categorie": "Evenimente" },
+    { "imagine": "/assets/img/portret-birou.jpg", "alt": "Portret în fața unei biblioteci", "categorie": "Activitate academică" }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "layout": "articol.njk",
+  "permalink": "/articole/{{ page.fileSlug }}/",
+  "autor": "Răzvan-Liviu Petre"
+}

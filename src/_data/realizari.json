@@ -1,0 +1,82 @@
+{
+  "seo_titlu": "Afilieri și realizări",
+  "seo_descriere": "Afilierile instituționale, gradele (7 DAN Combat și Karate-do), competițiile organizate, rezultatele ca antrenor și publicațiile Senseiului Răzvan-Liviu Petre.",
+  "titlu": "Afilieri și realizări",
+  "intro": "O imagine de ansamblu asupra activității profesionale, sportive și academice, pe baza CV-ului Senseiului.",
+  "categorii": [
+    {
+      "titlu": "Afilieri profesionale și instituționale",
+      "elemente": [
+        { "titlu": "Universitatea Națională de Educație Fizică și Sport București (UNEFS)", "detalii": "Conferențiar universitar doctor. Cadru didactic din 2003; vicepreședinte al Senatului în perioada 2020–2024.", "an": "2003–prezent", "link": "https://www.unefs.ro", "logo": "" },
+        { "titlu": "Federația Română de Combat", "detalii": "Președinte", "an": "2014–prezent", "link": "https://www.frcombat.ro", "logo": "/assets/img/logo-frc.jpg" },
+        { "titlu": "Federația Română de Karate", "detalii": "Președinte al Comisiei Naționale a Sportului Școlar și Universitar (din 2009); membru în Biroul Federal (2009–2013).", "an": "2009–prezent", "link": "", "logo": "" },
+        { "titlu": "Fédération Internationale d'Éducation Physique (FIEP)", "detalii": "Membru oficial", "an": "2015", "link": "", "logo": "" },
+        { "titlu": "Consiliul Științei Sportului din România", "detalii": "Membru", "an": "", "link": "", "logo": "" },
+        { "titlu": "Clubul Sportiv Suiko", "detalii": "Profesor-antrenor și coordonator al activității clubului", "an": "2002–prezent", "link": "", "logo": "" },
+        { "titlu": "Federația Sportului Școlar și Universitar", "detalii": "Președinte al grupului de lucru pentru ramura de sport karate", "an": "2018–2024", "link": "", "logo": "" }
+      ]
+    },
+    {
+      "titlu": "Calificări și grade sportive",
+      "elemente": [
+        { "titlu": "7 DAN (Shichi Dan), Combat și Karate-do", "detalii": "Federația Română de Combat", "an": "2014", "link": "", "logo": "" },
+        { "titlu": "5 DAN (Go Dan), Karate-do Shotokan", "detalii": "Liga Cluburilor de Karate-do Shotokan Fudokan, World Shotokan Karate Union România", "an": "2014", "link": "", "logo": "" },
+        { "titlu": "4 DAN (Yon Dan), Karate-do Shito-Ryu", "detalii": "Federația Română de Karate", "an": "2010", "link": "", "logo": "" },
+        { "titlu": "3 DAN (San Dan), Ju Jitsu", "detalii": "Federația de Arte Marțiale Filipineze și Discipline Asociate din România", "an": "2012", "link": "", "logo": "" },
+        { "titlu": "1 DAN (Sho Dan), Judo", "detalii": "Federația Română de Judo, Colegiul Național al Centurilor Negre", "an": "2012", "link": "", "logo": "" },
+        { "titlu": "Antrenor Maestru (Categoria I), Karate", "detalii": "Centrul Național de Formare și Perfecționare a Antrenorilor", "an": "2011", "link": "", "logo": "" },
+        { "titlu": "Antrenor de Arte Marțiale", "detalii": "Program postuniversitar, UNEFS", "an": "2018", "link": "", "logo": "" },
+        { "titlu": "Antrenor de Culturism-Fitness", "detalii": "Centrul Național de Formare și Perfecționare a Antrenorilor", "an": "2006", "link": "", "logo": "" },
+        { "titlu": "Antrenor de Judo", "detalii": "Academia Națională de Educație Fizică și Sport, Centrul Național de Formare și Perfecționare a Antrenorilor", "an": "2001", "link": "", "logo": "" },
+        { "titlu": "Arbitru național", "detalii": "Federația Română de Karate", "an": "2004–2012", "link": "", "logo": "" }
+      ]
+    },
+    {
+      "titlu": "Organizarea competițiilor și evenimentelor",
+      "elemente": [
+        { "titlu": "Campionatul Național Universitar de Karate", "detalii": "Organizator, 15 ediții", "an": "2007–2026", "link": "", "logo": "" },
+        { "titlu": "Campionatul Național de Karate Shito-Ryu", "detalii": "Organizator, 5 ediții", "an": "2007–2011", "link": "", "logo": "" },
+        { "titlu": "Cupa României la Karate Modern Shito-Ryu", "detalii": "Organizator, 3 ediții (2004, 2005, 2007)", "an": "2004–2007", "link": "", "logo": "" },
+        { "titlu": "Seminar tehnic de karate cu Luigi Busa", "detalii": "Coorganizator. Luigi Busa este multiplu campion european și mondial EKF-WKF.", "an": "2015", "link": "", "logo": "" },
+        { "titlu": "Stagiu internațional de karate-do cu Hitoshi Kasuya, 8 DAN", "detalii": "Coorganizator. Hitoshi Kasuya este Chief Instructor al World Shotokan Karate-Do Federation.", "an": "2013", "link": "", "logo": "" },
+        { "titlu": "Stagiu de karate-do în colaborare cu Ambasada Japoniei", "detalii": "Organizator", "an": "2010", "link": "", "logo": "" },
+        { "titlu": "Delegația universitară a României, ramura karate", "detalii": "Membru în comisia de organizare a participării la Jocurile Europene Universitare (Polonia, 2022), Campionatele Universitare de Sporturi de Combat (Croația, 2023) și Jocurile Europene Universitare (Ungaria, 2024).", "an": "2022–2024", "link": "", "logo": "" }
+      ]
+    },
+    {
+      "titlu": "Rezultate sportive și activitate de formare",
+      "elemente": [
+        { "titlu": "Peste 3000 de sportivi formați", "detalii": "Și zeci de instructori naționali de karate", "an": "2002–prezent", "link": "", "logo": "" },
+        { "titlu": "Locuri I–V la Campionate Europene și Mondiale de Karate", "detalii": "Ca antrenor", "an": "", "link": "", "logo": "" },
+        { "titlu": "Campion Național Universitar cu echipa A.N.E.F.S./U.N.E.F.S.", "detalii": "20 de titluri: 2004–2009, 2011–2019 și 2022–2026. Vicecampion național universitar în 2010.", "an": "2004–2026", "link": "", "logo": "" },
+        { "titlu": "Cupa României la Karate Modern Shito-Ryu", "detalii": "Câștigată cu Clubul Sportiv Suiko", "an": "2004, 2005", "link": "", "logo": "" },
+        { "titlu": "Locuri I–III la Campionatele Naționale de Karate și Combat", "detalii": "La diferite categorii de vârstă și greutate. [De confirmat: rezultate ca sportiv sau ca antrenor.]", "an": "2002–prezent", "link": "", "logo": "" },
+        { "titlu": "Distincția DO-ACADEMICA", "detalii": "Pentru merite deosebite în promovarea Karate-do Shotokan, acordată de Liga Cluburilor de Karate-do Shotokan Fudokan", "an": "", "link": "", "logo": "" },
+        { "titlu": "Diplome de excelență", "detalii": "Din partea lui Hitoshi Kasuya (8 DAN), a Federației Române de Karate, a Federației Sportului Școlar și Universitar, a Federației Române de Combat, a L.C.K.S.F. și a mai multor cluburi sportive, pentru contribuția la dezvoltarea karate-ului în România", "an": "", "link": "", "logo": "" }
+      ]
+    },
+    {
+      "titlu": "Cărți, publicații și cercetare",
+      "elemente": [
+        { "titlu": "Etică, integritate și deontologie în domeniul științei sportului și educației fizice", "detalii": "Carte, Editura Discobolul, București", "an": "2022", "link": "", "logo": "" },
+        { "titlu": "Obiectivizarea pregătirii în Combat Karate-do", "detalii": "Carte, Editura Discobolul, București", "an": "2017", "link": "", "logo": "" },
+        { "titlu": "Studenții sportivi se pregătesc pentru jobul potrivit", "detalii": "Carte, coautor, Editura Discobolul, București", "an": "2017", "link": "", "logo": "" },
+        { "titlu": "Combat Karate-Do", "detalii": "Carte, Editura Discobolul, București", "an": "2014", "link": "", "logo": "" },
+        { "titlu": "Standard de Pregătire Profesională: Calificarea Antrenor", "detalii": "Carte, coautor, Editura Discobolul", "an": "2013", "link": "", "logo": "" },
+        { "titlu": "Exerciții fizice analitice pentru dezvoltarea principalelor grupe musculare ale corpului uman", "detalii": "Carte, coautor, Editura Didactică și Pedagogică, București", "an": "2012", "link": "", "logo": "" },
+        { "titlu": "Nutritional Strategies for Recovery–Adaptation Coupling After Exercise", "detalii": "Articol, coautor. Nutrients, 18(15), 2523", "an": "2026", "link": "https://doi.org/10.3390/nu18152523", "logo": "" },
+        { "titlu": "Study on the Development of Lower Limb Strength Using XBODY Technology", "detalii": "Articol, coautor. Revista Marathon, vol. XV, nr. 2", "an": "2023", "link": "https://doi.org/10.24818/mrt.23.15.02.02", "logo": "" },
+        { "titlu": "Concentration Time Values in Two-arm Snatch Weightlifting, 109-kg Junior Class", "detalii": "Articol, coautor. Discobolul: Physical Education, Sport and Kinetotherapy Journal, nr. 60", "an": "2021", "link": "https://doi.org/10.35189/dpeskj.2021.60.2.3", "logo": "" },
+        { "titlu": "Analysis on the Multiple Intelligences of Students from Faculty of Physical Education and Sports", "detalii": "Articol, coautor. BRAIN: Broad Research in Artificial Intelligence and Neuroscience, vol. 11, nr. 4Sup1", "an": "2020", "link": "https://doi.org/10.18662/brain/11.4Sup1", "logo": "" },
+        { "titlu": "Execution speed of specific karate-do punches and kicks in people aged 30–60 years, as an indicator for the quality of life", "detalii": "Articol. Discobolul, nr. 2 (40)", "an": "2015", "link": "", "logo": "" },
+        { "titlu": "Objectivization of the preparation process using modern video means in karate-do for persons aged 30 to 60 years", "detalii": "Articol. Discobolul, nr. 3 (41)", "an": "2015", "link": "", "logo": "" },
+        { "titlu": "Implementation of a program based on specific means for the execution speed development in karate-do", "detalii": "Articol, coautor. Medimond International Proceedings, indexat Web of Science", "an": "2014", "link": "", "logo": "" },
+        { "titlu": "Measurement of the strike execution speed in karate-do by using the Quintic information system", "detalii": "Articol, coautor. Conferința internațională eLearning and Software for Education, indexat Web of Science", "an": "2013", "link": "", "logo": "" },
+        { "titlu": "The efficient learning of strikes in relation to the karate-do stances by means of the Pedar-X plantar pressure measurement system", "detalii": "Articol, coautor. Conferința internațională eLearning and Software for Education, indexat Web of Science", "an": "2013", "link": "", "logo": "" },
+        { "titlu": "Pluri și interdisciplinaritate în programe doctorale și postdoctorale", "detalii": "Proiect de cercetare postdoctorală (POSDRU/159/1.5/S/141086), Institutul de Cercetare a Calității Vieții, Academia Română", "an": "2014–2015", "link": "", "logo": "" },
+        { "titlu": "Optimizarea pregătirii psiho-fizice a luptătorilor în vederea obținerii unei medalii la Jocurile Olimpice 2012", "detalii": "Proiect de cercetare finanțat de Federația Română de Lupte, membru în echipă", "an": "2010", "link": "", "logo": "" },
+        { "titlu": "Revista „Discobolul”", "detalii": "Redactor de specialitate (2005–2006) și secretar de redacție (2007)", "an": "2005–2007", "link": "", "logo": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<section class="sec sec--dark loc" aria-labelledby="loc-titlu">
+  <div class="wrap loc__grid">
+    <div>
+      <h2 class="h-section" id="loc-titlu">Unde au loc antrenamentele</h2>
+      <address class="loc__addr">
+        <strong>{{ site.contact.locatie_nume }}</strong><br>
+        {{ site.contact.adresa }}<br>
+        {{ site.contact.zona }}
+      </address>
+      <div class="loc__hint directions directions--dark">{{ site.contact.indicatii | md | safe }}</div>
+    </div>
+    <div class="loc__side">
+      {%- if programe.info_logistice %}
+      <h3 class="h-mini">Program și informații practice</h3>
+      <div class="prose prose--dark">{{ programe.info_logistice | md | safe }}</div>
+      {%- else %}
+      <p>Pentru programul antrenamentelor și alte detalii practice, vă rugăm să ne contactați.</p>
+      {%- endif %}
+      <a class="btn btn--red" href="/contact/">{{ programe.buton_contact }}</a>
+    </div>
+  </div>
+</section>

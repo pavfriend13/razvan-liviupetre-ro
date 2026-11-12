@@ -1,0 +1,93 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /contact/
+eleventyComputed:
+  title: "{{ contact.titlu }}"
+  seoTitle: "{{ contact.seo_titlu }}"
+  seoDescription: "{{ contact.seo_descriere }}"
+---
+{% from "macros.njk" import pageHead %}
+{{ pageHead(contact.titlu, contact.intro) }}
+{%- set adresaCompleta = site.contact.locatie_nume + ", " + site.contact.adresa + ", " + site.contact.zona %}
+
+<section class="sec" aria-label="Date de contact și formular">
+  <div class="wrap contact">
+    <div class="contact__info">
+      <h2 class="h-sub">{{ site.nume_complet }}</h2>
+      <dl class="facts">
+        <dt>Telefon</dt>
+        <dd>{% if site.contact.telefon | isTodo %}{{ site.contact.telefon | todo | safe }}{% else %}<a href="tel:{{ site.contact.telefon | telHref }}">{{ site.contact.telefon }}</a>{% endif %}</dd>
+        <dt>Email</dt>
+        <dd>{% if site.contact.email | isTodo %}{{ site.contact.email | todo | safe }}{% else %}<a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>{% endif %}</dd>
+        <dt>Adresa</dt>
+        <dd>{{ site.contact.locatie_nume }}<br>{{ site.contact.adresa }}<br>{{ site.contact.zona }}</dd>
+        <dt>Indicații de acces</dt>
+        <dd class="directions">{{ site.contact.indicatii | md | safe }}</dd>
+        <dt>Rețele sociale</dt>
+        <dd class="facts__social">
+          {%- for r in site.retele %}{% if r.link %}<a href="{{ r.link }}" target="_blank" rel="noopener">{{ r.nume }}</a>{% else %}<span>{{ r.nume }} <mark class="todo">[link]</mark></span>{% endif %}{% endfor %}
+        </dd>
+      </dl>
+    </div>
+
+    <form class="form form--light" id="formular" name="contact" method="POST" action="/contact/multumim/" data-netlify="true" netlify-honeypot="adresa_web" novalidate>
+      <h2 class="h-sub">{{ contact.formular_titlu }}</h2>
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp" aria-hidden="true"><label>Nu completați acest câmp: <input name="adresa_web" tabindex="-1" autocomplete="off"></label></p>
+
+      <div class="form__summary" id="form-rezumat" tabindex="-1" hidden>
+        <p>Vă rugăm să corectați câmpurile marcate:</p>
+        <ul></ul>
+      </div>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="f-nume">Nume <span aria-hidden="true">*</span></label>
+          <input id="f-nume" name="nume" type="text" autocomplete="name" required aria-describedby="e-nume">
+          <p class="field__err" id="e-nume"></p>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail <span aria-hidden="true">*</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email">
+          <p class="field__err" id="e-email"></p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-program">Program de interes</label>
+        <select id="f-program" name="program">
+          <option value="">Alegeți (opțional)</option>
+          {%- for p in programe.lista %}<option value="{{ p.slug }}">{{ p.nume }}</option>{% endfor %}
+          <option value="colaborare">Colaborare academică sau seminar</option>
+          <option value="altul">Altă solicitare</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-mesaj">Mesaj <span aria-hidden="true">*</span></label>
+        <textarea id="f-mesaj" name="mesaj" rows="5" required aria-describedby="e-mesaj"></textarea>
+        <p class="field__err" id="e-mesaj"></p>
+      </div>
+      <div class="field field--check">
+        <input id="f-gdpr" name="consimtamant" type="checkbox" value="da" required aria-describedby="e-gdpr">
+        <label for="f-gdpr">{{ contact.consimtamant }} <a href="/confidentialitate/">Citiți informarea</a>.</label>
+        <p class="field__err" id="e-gdpr"></p>
+      </div>
+      <p class="form__req"><span aria-hidden="true">*</span> Câmpuri obligatorii</p>
+      <button class="btn btn--red" type="submit">Trimiteți mesajul</button>
+      <p class="form__status" role="status" aria-live="polite" data-ok="{{ contact.succes }}" data-err="{{ contact.eroare }}"></p>
+    </form>
+  </div>
+</section>
+
+<section class="sec sec--paper2 map" aria-labelledby="harta-titlu">
+  <div class="wrap">
+    <h2 class="h-sub" id="harta-titlu">Hartă</h2>
+    <div class="map__box" id="harta" data-q="{{ adresaCompleta }}">
+      <p>Harta este furnizată de Google Maps. Se încarcă doar la cererea dumneavoastră, iar Google poate plasa cookies.</p>
+      <div class="map__btns">
+        <button type="button" class="btn btn--dark" id="harta-btn">Afișează harta</button>
+        <a class="btn btn--outline" href="https://www.google.com/maps/search/?api=1&query={{ adresaCompleta | urlencode }}" target="_blank" rel="noopener">Deschide în Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>

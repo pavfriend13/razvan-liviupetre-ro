@@ -1,0 +1,55 @@
+{
+  "seo_titlu": "Programe: Combat, Karate-do și autoapărare pentru femei",
+  "seo_descriere": "Programele Senseiului Răzvan-Liviu Petre: Combat și Karate-do pentru copii de la 6 ani, adolescenți și adulți, și autoapărare pentru femei. Cotroceni, București.",
+  "titlu": "Programe",
+  "intro": "Programele sunt gândite ca activități de formare sportivă și educațională. Fiecare pornește de la nivelul dumneavoastră și avansează în ritmul propriu, cu accent pe tehnică, siguranță și dezvoltare personală.",
+  "buton_contact": "Programează prima ședință gratuită",
+  "info_logistice": "",
+  "lista": [
+    {
+      "slug": "combat-karate-do",
+      "nume": "Combat și Karate-do",
+      "rezumat": "O activitate de formare sportivă și educațională care integrează tehnica, disciplina, coordonarea și dezvoltarea personală.",
+      "imagine": "/assets/img/echipa-centuri-negre.jpg",
+      "imagine_alt": "Practicanți de Karate-do cu centura neagră, alături de Senseiul Petre",
+      "seo_descriere": "Program de Combat și Karate-do pentru copii de la 6 ani, adolescenți și adulți, cu sau fără experiență anterioară. Cotroceni, București.",
+      "descriere": "Programul de Combat și Karate-do combină pregătirea tehnică cu educația prin sport. Antrenamentele dezvoltă coordonarea, forța și mobilitatea, dar și disciplina, concentrarea și respectul față de partenerii de antrenament.\n\nTehnicile sunt predate progresiv, cu atenție la execuția corectă și la siguranța fiecărui practicant.",
+      "public_titlu": "Cui se adresează",
+      "public": [
+        { "text": "Copiilor, începând cu vârsta de 6 ani" },
+        { "text": "Adolescenților și adulților" },
+        { "text": "Părinților care doresc să participe alături de copii" },
+        { "text": "Persoanelor fără experiență anterioară sau cu experiență în arte marțiale" }
+      ],
+      "accente_titlu": "Ce presupune antrenamentul",
+      "accente": [
+        { "text": "Tehnică de bază, forme (kata) și lucru cu partenerul" },
+        { "text": "Pregătire fizică adaptată vârstei și nivelului" },
+        { "text": "Disciplină, respect și autocontrol" },
+        { "text": "Dezvoltare personală prin efort constant" }
+      ]
+    },
+    {
+      "slug": "autoaparare-pentru-femei",
+      "nume": "Autoapărare pentru femei",
+      "rezumat": "Principii și tehnici de autoapărare, conștientizarea situațiilor de risc și dezvoltarea încrederii prin antrenament.",
+      "imagine": "/assets/img/autoaparare-femei.webp",
+      "imagine_alt": "Senseiul Petre alături de un grup de participante la un curs de autoapărare pentru femei",
+      "seo_descriere": "Program de autoapărare pentru femei: principii și tehnici de autoapărare, conștientizarea riscurilor și exersare controlată. Cotroceni, București.",
+      "descriere": "Programul de autoapărare pentru femei vă ajută să înțelegeți principiile autoapărării și să exersați, într-un cadru sigur și controlat, reacții și tehnici simple.\n\nAutoapărarea nu oferă garanții. Ea se construiește în timp, prin conștientizare, exercițiu și încredere dobândită treptat. Programul nu necesită experiență anterioară.",
+      "public_titlu": "Ce veți exersa",
+      "public": [
+        { "text": "Principiile și tehnicile de bază ale autoapărării" },
+        { "text": "Conștientizarea și evitarea situațiilor de risc" },
+        { "text": "Exersarea controlată a reacțiilor și tehnicilor" },
+        { "text": "Disciplina și încrederea dezvoltate prin antrenament" }
+      ],
+      "accente_titlu": "Cum se desfășoară",
+      "accente": [
+        { "text": "Grupuri mici, într-un cadru respectuos" },
+        { "text": "Progresie treptată, de la principii la aplicare" },
+        { "text": "Exerciții adaptate condiției fizice a fiecărei participante" }
+      ]
+    }
+  ]
+}

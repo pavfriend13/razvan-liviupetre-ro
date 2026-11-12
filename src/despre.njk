@@ -1,0 +1,131 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /despre/
+eleventyComputed:
+  title: "{{ despre.titlu }}"
+  seoTitle: "{{ despre.seo_titlu }}"
+  seoDescription: "{{ despre.seo_descriere }}"
+  ogImage: "{{ despre.imagine }}"
+  schema:
+    "@context": "https://schema.org"
+    "@type": "ProfilePage"
+    mainEntity:
+      "@type": "Person"
+      name: "{{ site.nume }}"
+      honorificPrefix: "Conf. univ. dr."
+      jobTitle: "Conferențiar universitar doctor"
+      url: "{{ site.url }}/despre/"
+      memberOf:
+        "@type": "SportsOrganization"
+        name: "Federația Română de Combat"
+---
+{% from "macros.njk" import pageHead, next %}
+{{ pageHead(despre.titlu, "Sensei | Conferențiar universitar doctor | Combat & Karate-do") }}
+
+<!-- Introducere -->
+<section class="sec" aria-labelledby="d-intro">
+  <div class="wrap duo">
+    <figure class="duo__img duo__img--portrait" data-reveal><img src="{{ despre.imagine }}" alt="{{ despre.imagine_alt }}" width="600" height="600" fetchpriority="high"></figure>
+    <div class="duo__body">
+      <h2 class="h-sub" id="d-intro">{{ site.nume_complet }}</h2>
+      <div class="prose">{{ despre.intro | md | safe }}</div>
+      <nav class="toc" aria-label="Pe această pagină">
+        <a href="#parcurs">Parcurs profesional</a>
+        <a href="#academic">Activitate academică</a>
+        <a href="#sportiv">Experiență sportivă</a>
+        <a href="#studii">Studii și formare</a>
+        <a href="#publicatii">Publicații</a>
+        {%- if despre.cv.fisier %}<a href="#cv">CV</a>{% endif %}
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Cronologie -->
+<section class="sec sec--dark" id="parcurs" aria-labelledby="d-parcurs">
+  <div class="wrap">
+    <h2 class="h-section" id="d-parcurs" data-reveal>Parcurs profesional</h2>
+    <ol class="chrono">
+      {%- for e in despre.cronologie %}
+      <li class="chrono__item">
+        <p class="chrono__year">{{ e.perioada | todo | safe }}</p>
+        <div>
+          <h3>{{ e.titlu | todo | safe }}</h3>
+          <p>{{ e.text | todo | safe }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- Academic -->
+<section class="sec" id="academic" aria-labelledby="d-academic">
+  <div class="wrap duo duo--rev">
+    <figure class="duo__img duo__img--wide" data-reveal><img src="{{ despre.academic.imagine }}" alt="{{ despre.academic.imagine_alt }}" width="1328" height="747" loading="lazy"></figure>
+    <div class="duo__body">
+      <h2 class="h-section" id="d-academic">{{ despre.academic.titlu }}</h2>
+      <div class="prose">{{ despre.academic.text | md | safe }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- Sportiv -->
+<section class="sec sec--paper2" id="sportiv" aria-labelledby="d-sportiv">
+  <div class="wrap duo">
+    <figure class="duo__img duo__img--wide" data-reveal><img src="{{ despre.sportiv.imagine }}" alt="{{ despre.sportiv.imagine_alt }}" width="1600" height="1200" loading="lazy"></figure>
+    <div class="duo__body">
+      <h2 class="h-section" id="d-sportiv">{{ despre.sportiv.titlu }}</h2>
+      <div class="prose">{{ despre.sportiv.text | md | safe }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- Studii -->
+<section class="sec" id="studii" aria-labelledby="d-studii">
+  <div class="wrap">
+    <h2 class="h-section" id="d-studii" data-reveal>Studii și formare</h2>
+    <ul class="rows rows--light">
+      {%- for s in despre.studii %}
+      <li class="rows__item"><h3>{{ s.titlu | todo | safe }}</h3><p>{{ s.detalii | todo | safe }}</p></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- Publicații -->
+<section class="sec sec--dark" id="publicatii" aria-labelledby="d-pub">
+  <div class="wrap">
+    <div class="split-head">
+      <h2 class="h-section" id="d-pub" data-reveal>Publicații</h2>
+      <p>{{ despre.publicatii.intro }}</p>
+    </div>
+    <ul class="rows">
+      {%- for p in despre.publicatii.lista %}
+      <li class="rows__item">
+        <h3>{% if p.link %}<a href="{{ p.link }}" rel="noopener" target="_blank">{{ p.titlu }}</a>{% else %}{{ p.titlu | todo | safe }}{% endif %}</h3>
+        <p>{{ p.detalii | todo | safe }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- if despre.publicatii.lista_extinsa %}
+    <a class="btn btn--outline-light" href="{{ despre.publicatii.lista_extinsa }}">Vezi lista completă de publicații</a>
+    {%- endif %}
+  </div>
+</section>
+
+<!-- CV: apare doar dacă a fost încărcat un fișier din panou -->
+{%- if despre.cv.fisier %}
+<section class="sec" id="cv" aria-labelledby="d-cv">
+  <div class="wrap cvbox">
+    <h2 class="h-section" id="d-cv">CV profesional</h2>
+    <div class="cvbox__btns">
+      <a class="btn btn--dark" href="{{ despre.cv.fisier }}" target="_blank" rel="noopener">Consultă CV-ul</a>
+      <a class="btn btn--red" href="{{ despre.cv.fisier }}" download>Descarcă CV-ul (PDF)</a>
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+{{ next("/afilieri-si-realizari/", "Afilieri și realizări") }}

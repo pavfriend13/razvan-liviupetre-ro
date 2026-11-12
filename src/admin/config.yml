@@ -1,0 +1,413 @@
+# =========================================================
+# Panoul de administrare (Decap CMS)
+# Depozitul GitHub: pavfriend13/razvan-liviupetre-ro
+# (vezi GHID-ADMINISTRARE.md).
+# =========================================================
+backend:
+  name: github
+  repo: pavfriend13/razvan-liviupetre-ro
+  branch: main
+  base_url: https://api.netlify.com
+  commit_messages:
+    create: "Creat {{collection}} „{{slug}}”"
+    update: "Actualizat {{collection}} „{{slug}}”"
+    delete: "Șters {{collection}} „{{slug}}”"
+    uploadMedia: "Încărcat „{{path}}”"
+    deleteMedia: "Șters „{{path}}”"
+
+# Permite testarea panoului pe calculator (npm run cms + npm start)
+local_backend: true
+
+locale: ro
+publish_mode: editorial_workflow
+site_url: https://razvan-liviupetre.ro
+display_url: https://razvan-liviupetre.ro
+logo_url: /assets/img/logo-frc.jpg
+
+media_folder: src/assets/uploads
+public_folder: /assets/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  # -------------------------------------------------------
+  # ARTICOLE
+  # -------------------------------------------------------
+  - name: articole
+    label: Articole
+    label_singular: articol
+    description: "Scrieți, salvați ca ciornă, previzualizați și publicați articole."
+    folder: src/articole
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{categorie}}, {{date}})"
+    sortable_fields: ["date", "title", "categorie"]
+    view_filters:
+      - { label: "Filosofie și arte marțiale", field: categorie, pattern: "Filosofie și arte marțiale" }
+      - { label: "Combat și Karate-do", field: categorie, pattern: "Combat și Karate-do" }
+      - { label: "Educație și dezvoltare personală", field: categorie, pattern: "Educație și dezvoltare personală" }
+      - { label: "Cercetare și publicații", field: categorie, pattern: "Cercetare și publicații" }
+      - { label: "Reflecții și perspective", field: categorie, pattern: "Reflecții și perspective" }
+    preview_path: "articole/{{slug}}"
+    fields:
+      - { label: "Titlu", name: title, widget: string }
+      - { label: "Data publicării", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, picker_utc: true }
+      - { label: "Autor", name: autor, widget: string, default: "Răzvan-Liviu Petre" }
+      - label: "Categorie"
+        name: categorie
+        widget: select
+        options: ["Filosofie și arte marțiale", "Combat și Karate-do", "Educație și dezvoltare personală", "Cercetare și publicații", "Reflecții și perspective"]
+      - { label: "Imagine reprezentativă", name: imagine, widget: image, required: false }
+      - { label: "Descrierea imaginii (pentru accesibilitate)", name: imagine_alt, widget: string, required: false, hint: "Ce se vede în imagine, într-o propoziție." }
+      - { label: "Rezumat", name: rezumat, widget: text, hint: "1–2 propoziții, afișate în lista de articole." }
+      - { label: "Descriere SEO (opțional)", name: seo_descriere, widget: text, required: false, hint: "Maxim ~155 de caractere. Dacă lipsește, se folosește rezumatul." }
+      - { label: "Conținut", name: body, widget: markdown }
+
+  # -------------------------------------------------------
+  # EVENIMENTE
+  # -------------------------------------------------------
+  - name: evenimente
+    label: Evenimente
+    label_singular: eveniment
+    description: "Evenimentele viitoare și trecute. Evenimentele se mută automat în „trecute” după dată."
+    folder: src/evenimente
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: ["date", "title"]
+    preview_path: "evenimente/{{slug}}"
+    fields:
+      - { label: "Titlu", name: title, widget: string }
+      - { label: "Data", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, picker_utc: true }
+      - { label: "Ora (opțional)", name: ora, widget: string, required: false, hint: "De exemplu 10:00" }
+      - { label: "Locația", name: locatie, widget: string, required: false }
+      - { label: "Imagine", name: imagine, widget: image, required: false }
+      - { label: "Descrierea imaginii", name: imagine_alt, widget: string, required: false }
+      - { label: "Rezumat", name: rezumat, widget: text }
+      - { label: "Link către detalii suplimentare (opțional)", name: link, widget: string, required: false }
+      - { label: "Eveniment demonstrativ (exemplu)", name: exemplu, widget: boolean, default: false, hint: "Bifați doar pentru exemple. Evenimentele reale rămân nebifate." }
+      - label: "Galerie foto după desfășurare"
+        name: galerie
+        widget: list
+        required: false
+        summary: "{{fields.alt}}"
+        hint: "Publicați fotografii cu participanți sau minori doar cu acordul acestora sau al părinților."
+        fields:
+          - { label: "Fotografie", name: imagine, widget: image }
+          - { label: "Descriere", name: alt, widget: string }
+      - { label: "Descriere", name: body, widget: markdown }
+
+  # -------------------------------------------------------
+  # PAGINI
+  # -------------------------------------------------------
+  - name: pagini
+    label: Pagini
+    description: "Textele și imaginile fiecărei pagini."
+    editor: { preview: false }
+    files:
+      # ---------- Setări generale ----------
+      - name: site
+        label: "Setări generale și contact"
+        file: src/_data/site.json
+        fields:
+          - { label: "Nume", name: nume, widget: string }
+          - { label: "Nume complet (cu titlu)", name: nume_complet, widget: string }
+          - { label: "Adresa website-ului", name: url, widget: string }
+          - { label: "Limba", name: limba, widget: hidden, default: "ro" }
+          - { label: "Descriere SEO implicită", name: descriere_seo, widget: text }
+          - { label: "Imagine pentru distribuire pe rețele", name: imagine_social, widget: image }
+          - { label: "Logo", name: logo, widget: image }
+          - { label: "Descrierea logo-ului", name: logo_alt, widget: string }
+          - { label: "Autor implicit al articolelor", name: autor_implicit, widget: string }
+          - label: "Date de contact"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Telefon", name: telefon, widget: string }
+              - { label: "E-mail", name: email, widget: string }
+              - { label: "Numele locației", name: locatie_nume, widget: string }
+              - { label: "Adresa", name: adresa, widget: string }
+              - { label: "Zona / orașul", name: zona, widget: string }
+              - { label: "Indicații de acces", name: indicatii, widget: markdown, buttons: ["bold", "bulleted-list", "link"], editor_components: [] }
+          - label: "Rețele sociale"
+            name: retele
+            widget: list
+            summary: "{{fields.nume}}"
+            fields:
+              - { label: "Rețea", name: nume, widget: string }
+              - { label: "Link", name: link, widget: string, required: false }
+
+      # ---------- Acasă ----------
+      - name: acasa
+        label: "Acasă"
+        file: src/_data/acasa.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - label: "Secțiunea principală (hero)"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Fotografie", name: imagine, widget: image }
+              - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+              - { label: "Subtitlu", name: subtitlu, widget: string }
+              - { label: "Concept", name: concept, widget: string }
+              - { label: "Text introductiv", name: intro, widget: text }
+              - { label: "Buton 1 (filosofie)", name: buton_1, widget: string }
+              - { label: "Buton 2 (despre)", name: buton_2, widget: string }
+              - label: "Banda animată"
+                name: banda
+                widget: list
+                summary: "{{fields.text}}"
+                fields: [{ label: "Text", name: text, widget: string }]
+          - label: "Despre (rezumat)"
+            name: despre
+            widget: object
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Text", name: text, widget: text }
+              - { label: "Portret", name: imagine, widget: image }
+              - { label: "Descrierea portretului", name: imagine_alt, widget: string }
+              - { label: "Buton", name: buton, widget: string }
+          - label: "Corp–Minte–Spirit"
+            name: cms
+            widget: object
+            hint: "Cele trei carduri se editează din pagina Corp–Minte–Spirit."
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Introducere", name: intro, widget: text }
+              - { label: "Link", name: buton, widget: string }
+          - label: "Programe"
+            name: programe
+            widget: object
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Introducere", name: intro, widget: text }
+          - label: "Experiență și realizări"
+            name: realizari
+            widget: object
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Introducere", name: intro, widget: text }
+              - label: "Puncte"
+                name: puncte
+                widget: list
+                summary: "{{fields.titlu}}"
+                fields:
+                  - { label: "Titlu", name: titlu, widget: string }
+                  - { label: "Text", name: text, widget: text }
+              - { label: "Buton", name: buton, widget: string }
+          - { label: "Titlul secțiunii de articole", name: articole_titlu, widget: string }
+          - label: "Invitație la contact"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Text", name: text, widget: text }
+              - { label: "Buton", name: buton, widget: string }
+
+      # ---------- Despre ----------
+      - name: despre
+        label: "Despre Sensei"
+        file: src/_data/despre.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Introducere", name: intro, widget: markdown }
+          - { label: "Fotografie", name: imagine, widget: image }
+          - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+          - label: "Parcurs profesional (cronologie)"
+            name: cronologie
+            widget: list
+            summary: "{{fields.perioada}}: {{fields.titlu}}"
+            fields:
+              - { label: "Perioada / anul", name: perioada, widget: string }
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Text", name: text, widget: text }
+          - label: "Activitate academică"
+            name: academic
+            widget: object
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Text", name: text, widget: markdown }
+              - { label: "Fotografie", name: imagine, widget: image }
+              - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+          - label: "Experiență sportivă"
+            name: sportiv
+            widget: object
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Text", name: text, widget: markdown }
+              - { label: "Fotografie", name: imagine, widget: image }
+              - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+          - label: "Studii și formare"
+            name: studii
+            widget: list
+            summary: "{{fields.titlu}}"
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Detalii", name: detalii, widget: string }
+          - label: "Publicații"
+            name: publicatii
+            widget: object
+            fields:
+              - { label: "Introducere", name: intro, widget: string }
+              - label: "Selecție"
+                name: lista
+                widget: list
+                summary: "{{fields.titlu}}"
+                fields:
+                  - { label: "Titlu", name: titlu, widget: string }
+                  - { label: "Detalii (editură, revistă, an)", name: detalii, widget: string }
+                  - { label: "Link (opțional)", name: link, widget: string, required: false }
+              - { label: "Lista completă (PDF sau link, opțional)", name: lista_extinsa, widget: file, required: false }
+          - label: "CV"
+            name: cv
+            widget: object
+            fields:
+              - { label: "Fișier CV public (PDF)", name: fisier, widget: file, required: false, hint: "Cât timp acest câmp este gol, secțiunea CV nu apare pe website. Încărcați doar versiunea aprobată pentru publicare." }
+
+      # ---------- Corp–Minte–Spirit ----------
+      - name: filosofie
+        label: "Corp–Minte–Spirit"
+        file: src/_data/filosofie.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Introducere", name: intro, widget: text }
+          - { label: "Fotografie", name: imagine, widget: image }
+          - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+          - label: "Cele trei dimensiuni"
+            name: dimensiuni
+            widget: list
+            allow_add: false
+            summary: "{{fields.nume}}"
+            fields:
+              - { label: "Nume", name: nume, widget: string }
+              - { label: "Rezumat (afișat pe pagina Acasă)", name: rezumat, widget: string }
+              - { label: "Text", name: text, widget: markdown }
+              - { label: "Fotografie", name: imagine, widget: image }
+              - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+          - label: "Interdependența"
+            name: interdependenta
+            widget: object
+            fields:
+              - { label: "Titlu", name: titlu, widget: string }
+              - { label: "Text", name: text, widget: markdown }
+
+      # ---------- Programe ----------
+      - name: programe
+        label: "Programe"
+        file: src/_data/programe.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Introducere", name: intro, widget: text }
+          - { label: "Textul butonului de contact", name: buton_contact, widget: string }
+          - { label: "Program și informații practice (opțional)", name: info_logistice, widget: markdown, required: false, hint: "Lăsați gol dacă nu doriți să publicați orarul. Nu afișați tarife neconfirmate." }
+          - label: "Lista programelor"
+            name: lista
+            widget: list
+            summary: "{{fields.nume}}"
+            fields:
+              - { label: "Adresa paginii (slug)", name: slug, widget: string, hint: "Doar litere mici, cifre și cratime. Nu o schimbați după publicare." }
+              - { label: "Nume", name: nume, widget: string }
+              - { label: "Rezumat", name: rezumat, widget: text }
+              - { label: "Fotografie", name: imagine, widget: image }
+              - { label: "Descrierea fotografiei", name: imagine_alt, widget: string }
+              - { label: "Descriere SEO", name: seo_descriere, widget: text }
+              - { label: "Descriere detaliată", name: descriere, widget: markdown }
+              - { label: "Titlul primei liste", name: public_titlu, widget: string }
+              - label: "Prima listă"
+                name: public
+                widget: list
+                summary: "{{fields.text}}"
+                fields: [{ label: "Text", name: text, widget: string }]
+              - { label: "Titlul celei de-a doua liste", name: accente_titlu, widget: string }
+              - label: "A doua listă"
+                name: accente
+                widget: list
+                summary: "{{fields.text}}"
+                fields: [{ label: "Text", name: text, widget: string }]
+
+      # ---------- Afilieri și realizări ----------
+      - name: realizari
+        label: "Afilieri și realizări"
+        file: src/_data/realizari.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Introducere", name: intro, widget: text }
+          - label: "Categorii"
+            name: categorii
+            widget: list
+            summary: "{{fields.titlu}}"
+            fields:
+              - { label: "Titlul categoriei", name: titlu, widget: string }
+              - label: "Elemente"
+                name: elemente
+                widget: list
+                summary: "{{fields.titlu}}"
+                fields:
+                  - { label: "Titlu", name: titlu, widget: string }
+                  - { label: "Detalii", name: detalii, widget: string, required: false }
+                  - { label: "An / perioadă", name: an, widget: string, required: false }
+                  - { label: "Link către site-ul oficial", name: link, widget: string, required: false }
+                  - { label: "Logo (doar cu drept de utilizare)", name: logo, widget: image, required: false }
+
+      # ---------- Galerie ----------
+      - name: galerie
+        label: "Galerie"
+        file: src/_data/galerie.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Introducere", name: intro, widget: text }
+          - { label: "Categorii", name: categorii, widget: list, hint: "Butoanele de filtrare." }
+          - label: "Fotografii"
+            name: poze
+            widget: list
+            summary: "{{fields.categorie}}: {{fields.alt}}"
+            hint: "Publicați fotografii cu participanți sau minori doar cu acordul acestora sau al părinților."
+            fields:
+              - { label: "Fotografie", name: imagine, widget: image }
+              - { label: "Descriere", name: alt, widget: string }
+              - { label: "Categorie", name: categorie, widget: select, options: ["Antrenamente", "Competiții", "Seminare", "Conferințe", "Activitate academică", "Evenimente"] }
+
+      # ---------- Contact ----------
+      - name: contact
+        label: "Contact"
+        file: src/_data/contact.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Introducere", name: intro, widget: text }
+          - { label: "Titlul formularului", name: formular_titlu, widget: string }
+          - { label: "Textul acordului GDPR", name: consimtamant, widget: text }
+          - { label: "Mesaj după trimitere reușită", name: succes, widget: string }
+          - { label: "Mesaj de eroare", name: eroare, widget: string }
+
+      # ---------- Confidențialitate ----------
+      - name: confidentialitate
+        label: "Confidențialitate și cookies"
+        file: src/_data/confidentialitate.json
+        fields:
+          - { label: "Titlu SEO", name: seo_titlu, widget: string }
+          - { label: "Descriere SEO", name: seo_descriere, widget: text }
+          - { label: "Titlu", name: titlu, widget: string }
+          - { label: "Data ultimei actualizări", name: actualizat, widget: string }
+          - { label: "Text", name: text, widget: markdown }

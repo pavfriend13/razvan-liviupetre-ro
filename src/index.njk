@@ -1,0 +1,153 @@
+---
+layout: base.njk
+darkHero: true
+bodyClass: page-home
+eleventyComputed:
+  seoTitle: "{{ acasa.seo_titlu }}"
+  seoDescription: "{{ acasa.seo_descriere }}"
+  ogImage: "{{ acasa.hero.imagine }}"
+  schema:
+    "@context": "https://schema.org"
+    "@type": "Person"
+    name: "{{ site.nume }}"
+    honorificPrefix: "Conf. univ. dr."
+    jobTitle: "Conferențiar universitar doctor"
+    url: "{{ site.url }}"
+    image: "{{ site.url }}{{ acasa.despre.imagine }}"
+    knowsAbout: ["Combat", "Karate-do", "Arte marțiale", "Educație fizică și sport"]
+    memberOf:
+      "@type": "SportsOrganization"
+      name: "Federația Română de Combat"
+---
+{% from "macros.njk" import articleCard, icon %}
+{% set h = acasa.hero %}
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-titlu">
+  <img class="hero__img" src="{{ h.imagine }}" alt="{{ h.imagine_alt }}" width="1280" height="853" fetchpriority="high">
+  <div class="hero__shade" aria-hidden="true"></div>
+  <p class="hero__kanji" lang="ja" aria-hidden="true">空手道</p>
+
+  <div class="hero__intro">
+    <p class="hero__sub">{{ h.subtitlu }}</p>
+    <p class="hero__concept">{{ h.concept }}</p>
+    <p class="hero__text">{{ h.intro }}</p>
+    <div class="hero__btns">
+      <a class="btn btn--red" href="/corp-minte-spirit/">{{ h.buton_1 }}</a>
+      <a class="btn btn--ghost" href="/despre/">{{ h.buton_2 }}</a>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      {%- for round in [1, 2] %}{% for b in h.banda %}<span>{{ b.text }}</span><i></i>{% endfor %}{% endfor %}
+    </div>
+  </div>
+
+  <h1 class="hero__name" id="hero-titlu">
+    {%- set parts = site.nume.split(" ") %}
+    <span class="hero__line"><span>{{ parts[0] }}</span></span>
+    <span class="hero__line"><span>{{ parts.slice(1).join(" ") }}</span></span>
+  </h1>
+</section>
+
+<!-- ============ DESPRE (rezumat) ============ -->
+<section class="hab" aria-labelledby="hab-titlu">
+  <div class="wrap hab__grid">
+    <figure class="hab__img" data-reveal><img src="{{ acasa.despre.imagine }}" alt="{{ acasa.despre.imagine_alt }}" width="765" height="765" loading="lazy"></figure>
+    <div class="hab__body">
+      <h2 class="h-section" id="hab-titlu" data-reveal>{{ acasa.despre.titlu }}</h2>
+      <p class="lead">{{ acasa.despre.text | todo | safe }}</p>
+      <a class="btn btn--dark" href="/despre/">{{ acasa.despre.buton }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORP – MINTE – SPIRIT ============ -->
+<section class="cms" aria-labelledby="cms-titlu">
+  <div class="wrap">
+    <div class="split-head">
+      <h2 class="h-section" id="cms-titlu" data-reveal>{{ acasa.cms.titlu }}</h2>
+      <p>{{ acasa.cms.intro }}</p>
+    </div>
+    <ul class="cms__grid">
+      {%- for d in filosofie.dimensiuni %}
+      <li class="cms__item" data-reveal>
+        {{ icon(d.nume) }}
+        <h3>{{ d.nume }}</h3>
+        <p>{{ d.rezumat }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <a class="link link--light" href="/corp-minte-spirit/">{{ acasa.cms.buton }}</a>
+  </div>
+</section>
+
+<!-- ============ PROGRAME ============ -->
+<section class="hprog" aria-labelledby="hprog-titlu">
+  <div class="wrap">
+    <div class="split-head">
+      <h2 class="h-section" id="hprog-titlu" data-reveal>{{ acasa.programe.titlu }}</h2>
+      <p>{{ acasa.programe.intro }}</p>
+    </div>
+    <div class="pcards">
+      {%- for p in programe.lista %}
+      <article class="pcard" data-reveal>
+        <figure><img src="{{ p.imagine }}" alt="{{ p.imagine_alt }}" width="1200" height="900" loading="lazy"></figure>
+        <h3>{{ p.nume }}</h3>
+        <p>{{ p.rezumat }}</p>
+        <a class="btn btn--dark" href="/programe/{{ p.slug }}/">Descoperă programul<span class="sr-only">: {{ p.nume }}</span></a>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENȚĂ ȘI REALIZĂRI ============ -->
+<section class="hreal" aria-labelledby="hreal-titlu">
+  <div class="wrap">
+    <div class="split-head">
+      <h2 class="h-section" id="hreal-titlu" data-reveal>{{ acasa.realizari.titlu }}</h2>
+      <p>{{ acasa.realizari.intro }}</p>
+    </div>
+    <ul class="rows">
+      {%- for r in acasa.realizari.puncte %}
+      <li class="rows__item">
+        <h3>{{ r.titlu }}</h3>
+        <p>{{ r.text | todo | safe }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <a class="btn btn--outline-light" href="/afilieri-si-realizari/">{{ acasa.realizari.buton }}</a>
+  </div>
+</section>
+
+<!-- ============ ARTICOLE RECENTE ============ -->
+<section class="harts" aria-labelledby="harts-titlu">
+  <div class="wrap">
+    <div class="split-head">
+      <h2 class="h-section" id="harts-titlu" data-reveal>{{ acasa.articole_titlu }}</h2>
+      <a class="link" href="/articole/">Toate articolele</a>
+    </div>
+    {%- set recente = collections.articole | limit(3) %}
+    {%- if recente.length %}
+    <div class="cards">
+      {%- for a in recente %}{{ articleCard(a) }}{% endfor %}
+    </div>
+    {%- else %}
+    <p class="empty">Primele articole vor fi publicate în curând.</p>
+    {%- endif %}
+  </div>
+</section>
+
+<!-- ============ CONTACT CTA ============ -->
+<section class="cta" aria-labelledby="cta-titlu">
+  <img class="cta__float cta__float--1" src="/assets/img/portret-birou.jpg" alt="" width="765" height="765" loading="lazy">
+  <img class="cta__float cta__float--2" src="/assets/img/kata-bo.jpg" alt="" width="720" height="1280" loading="lazy">
+  <img class="cta__float cta__float--3" src="/assets/img/trofeu.jpg" alt="" width="1200" height="1600" loading="lazy">
+  <img class="cta__float cta__float--4" src="/assets/img/campionat-national-2024.jpg" alt="" width="1440" height="960" loading="lazy">
+  <div class="cta__inner">
+    <h2 id="cta-titlu" data-reveal>{{ acasa.contact.text }}</h2>
+    <a class="btn btn--red" href="/contact/">{{ acasa.contact.buton }}</a>
+  </div>
+</section>

@@ -1,0 +1,116 @@
+{%- set metaTitle = (seoTitle or title) | plain -%}
+{%- if metaTitle != site.nume and not ((metaTitle | string).indexOf(site.nume) >= 0) -%}{%- set metaTitle = metaTitle + " | " + site.nume -%}{%- endif -%}
+{%- set metaDesc = (seoDescription or site.descriere_seo) | plain -%}
+{%- set canonical = page.url | absUrl(site.url) -%}
+{%- set ogImg = (ogImage or site.imagine_social) | absUrl(site.url) -%}
+<!doctype html>
+<html lang="ro" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ metaTitle }}</title>
+  <meta name="description" content="{{ metaDesc }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {%- if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="{{ site.nume }}">
+  <meta property="og:title" content="{{ metaTitle }}">
+  <meta property="og:description" content="{{ metaDesc }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ ogImg }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#171717">
+  <link rel="icon" href="{{ site.logo }}">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace('no-js','js');</script>
+  {%- if schema %}
+  <script type="application/ld+json">{{ schema | json | safe }}</script>
+  {%- endif %}
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip" href="#continut">Sari la conținut</a>
+
+  {%- set nav = [
+    ["/despre/", "Despre"],
+    ["/corp-minte-spirit/", "Corp–Minte–Spirit"],
+    ["/programe/", "Programe"],
+    ["/afilieri-si-realizari/", "Realizări"],
+    ["/galerie/", "Galerie"],
+    ["/articole/", "Articole"],
+    ["/evenimente/", "Evenimente"]
+  ] %}
+
+  <header class="nav{% if not darkHero %} nav--solid{% endif %}" id="nav">
+    <a class="nav__logo" href="/" aria-label="Acasă, {{ site.nume }}">
+      <img src="{{ site.logo }}" alt="" width="48" height="48">
+    </a>
+    <nav class="nav__links" aria-label="Navigare principală">
+      {%- for item in nav %}
+      <a href="{{ item[0] }}"{% if page.url.startsWith(item[0]) %} class="is-active" aria-current="page"{% endif %}>{{ item[1] }}</a>
+      {%- endfor %}
+    </nav>
+    <a class="nav__contact{% if page.url == '/contact/' %} is-active{% endif %}" href="/contact/">Contact</a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="meniu" aria-label="Deschide meniul">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu" id="meniu" hidden>
+    <nav aria-label="Meniu mobil">
+      <a href="/">Acasă</a>
+      {%- for item in nav %}
+      <a href="{{ item[0] }}"{% if page.url.startsWith(item[0]) %} aria-current="page"{% endif %}>{{ item[1] }}</a>
+      {%- endfor %}
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+
+  <main id="continut">
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__col footer__brand">
+        <p class="footer__name">{{ site.nume_complet }}</p>
+        <p>Sensei, specialist în Combat și Karate-do.</p>
+      </div>
+      <nav class="footer__col" aria-label="Navigare secundară">
+        <h2 class="footer__h">Website</h2>
+        <ul class="footer__links">
+          <li><a href="/">Acasă</a></li>
+          {%- for item in nav %}<li><a href="{{ item[0] }}">{{ item[1] }}</a></li>{% endfor %}
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <h2 class="footer__h">Contact</h2>
+        <address>
+          <p>{{ site.contact.locatie_nume }}<br>{{ site.contact.adresa }}<br>{{ site.contact.zona }}</p>
+          <p>{% if site.contact.telefon | isTodo %}{{ site.contact.telefon | todo | safe }}{% else %}<a href="tel:{{ site.contact.telefon | telHref }}">{{ site.contact.telefon }}</a>{% endif %}</p>
+          <p>{% if site.contact.email | isTodo %}{{ site.contact.email | todo | safe }}{% else %}<a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>{% endif %}</p>
+        </address>
+      </div>
+      <div class="footer__col">
+        <h2 class="footer__h">Urmăriți</h2>
+        <ul class="footer__links">
+          {%- for r in site.retele %}
+          <li>{% if r.link %}<a href="{{ r.link }}" rel="noopener" target="_blank">{{ r.nume }}<span class="sr-only"> (se deschide într-o filă nouă)</span></a>{% else %}<span>{{ r.nume }} <mark class="todo">[link de completat]</mark></span>{% endif %}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer__bottom">
+      <p>© {{ build.an }} {{ site.nume }}</p>
+      <ul>
+        <li><a href="/confidentialitate/">Confidențialitate și cookies</a></li>
+      </ul>
+    </div>
+    <p class="footer__word" aria-hidden="true"><span>Corp.</span> <span>Minte.</span> <span>Spirit.</span></p>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

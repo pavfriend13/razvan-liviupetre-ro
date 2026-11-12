@@ -1,0 +1,16 @@
+---
+layout: base.njk
+darkHero: true
+permalink: /confidentialitate/
+eleventyComputed:
+  title: "{{ confidentialitate.titlu }}"
+  seoTitle: "{{ confidentialitate.seo_titlu }}"
+  seoDescription: "{{ confidentialitate.seo_descriere }}"
+---
+{% from "macros.njk" import pageHead %}
+{{ pageHead(confidentialitate.titlu, "Ultima actualizare: " + confidentialitate.actualizat) }}
+<section class="sec">
+  <div class="wrap narrow">
+    <div class="prose">{{ confidentialitate.text | md | safe }}</div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+{
+  "name": "razvan-liviupetre-ro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website personal: Sensei Răzvan-Liviu Petre. Eleventy + Decap CMS.",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve --port 8080",
+    "cms": "decap-server"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.2",
+    "@fontsource-variable/archivo": "5.2.8",
+    "decap-server": "3.5.2"
+  }
+}

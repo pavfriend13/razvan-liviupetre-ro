@@ -1,0 +1,56 @@
+{# ---------- Antet de pagină (secțiunea închisă de sus) ---------- #}
+{% macro pageHead(titlu, intro, imagine="", alt="") %}
+<section class="phead{% if imagine %} phead--img{% endif %}">
+  {% if imagine %}<img class="phead__img" src="{{ imagine }}" alt="{{ alt }}" width="1600" height="1000" fetchpriority="high">{% endif %}
+  <div class="wrap phead__inner">
+    <h1 class="phead__title">{{ titlu }}</h1>
+    {% if intro %}<p class="phead__intro">{{ intro | todo | safe }}</p>{% endif %}
+  </div>
+</section>
+{% endmacro %}
+
+{# ---------- Card articol ---------- #}
+{% macro articleCard(a, heading="h3") %}
+<article class="card" data-categorie="{{ a.data.categorie }}" data-text="{{ (a.data.title + ' ' + a.data.rezumat + ' ' + a.data.categorie) | lower }}">
+  <a class="card__link" href="{{ a.url }}">
+    <figure>{% if a.data.imagine %}<img src="{{ a.data.imagine }}" alt="" width="800" height="500" loading="lazy">{% endif %}</figure>
+    <p class="card__meta"><span>{{ a.data.categorie }}</span><time datetime="{{ a.date | iso }}">{{ a.date | dataRo }}</time></p>
+    <{{ heading }} class="card__title">{{ a.data.title | todo | safe }}</{{ heading }}>
+    {% if a.data.rezumat %}<p class="card__sum">{{ a.data.rezumat }}</p>{% endif %}
+  </a>
+</article>
+{% endmacro %}
+
+{# ---------- Card eveniment ---------- #}
+{% macro eventCard(e) %}
+<article class="ecard" data-date="{{ (e.data.date_end or e.date) | iso }}">
+  <a class="ecard__link" href="{{ e.url }}">
+    <figure>{% if e.data.imagine %}<img src="{{ e.data.imagine }}" alt="" width="800" height="600" loading="lazy">{% endif %}</figure>
+    <div class="ecard__body">
+      <p class="ecard__date"><time datetime="{{ e.date | iso }}">{{ e.date | dataRo }}</time>{% if e.data.ora %}, ora {{ e.data.ora }}{% endif %}</p>
+      <h3 class="ecard__title">{{ e.data.title | todo | safe }}</h3>
+      {% if e.data.locatie %}<p class="ecard__loc">{{ e.data.locatie | todo | safe }}</p>{% endif %}
+    </div>
+  </a>
+</article>
+{% endmacro %}
+
+{# ---------- Pictograme Corp / Minte / Spirit ---------- #}
+{% macro icon(nume) %}
+<svg class="icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  {% if nume == "Corp" %}
+  <circle cx="24" cy="9" r="4.5"/><path d="M24 15v13M13 21l11 3 11-3M24 28l-9 14M24 28l9 14"/>
+  {% elif nume == "Minte" %}
+  <circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="2.5" class="icon__fill"/>
+  {% else %}
+  <path d="M37.5 12.5A18 18 0 1 0 42 26"/><path d="M42 26c-.6-3.6-2-6.8-4.5-9.6" class="icon__thin"/>
+  {% endif %}
+</svg>
+{% endmacro %}
+
+{# ---------- Buton cu link contextual ---------- #}
+{% macro next(href, text, label="Pasul următor") %}
+<nav class="next" aria-label="{{ label }}">
+  <a class="next__link" href="{{ href }}"><span class="next__label">{{ label }}</span><span class="next__text">{{ text }}</span></a>
+</nav>
+{% endmacro %}
