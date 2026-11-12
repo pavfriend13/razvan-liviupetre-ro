@@ -2,7 +2,7 @@
 title: "[Exemplu] Conferință: artele marțiale în educație"
 date: 2026-06-10
 ora: ""
-locatie: "[Locația]"
+locatie: ""
 imagine: /assets/img/studii-prezentare.jpg
 imagine_alt: Prezentare academică despre karate-do
 rezumat: Eveniment demonstrativ trecut.
