@@ -5,7 +5,7 @@ ora: ""
 locatie: "[Locația]"
 imagine: /assets/img/studii-prezentare.jpg
 imagine_alt: Prezentare academică despre karate-do
-rezumat: "Eveniment demonstrativ trecut, cu galerie foto după desfășurare."
+rezumat: Eveniment demonstrativ trecut.
 link: ""
 exemplu: true
 galerie:
@@ -14,5 +14,4 @@ galerie:
   - imagine: /assets/img/portret-birou.jpg
     alt: Portretul vorbitorului
 ---
-
-**Acesta este un eveniment demonstrativ**, care arată cum apare un eveniment trecut, cu galerie foto după desfășurare.
+**Acesta este un eveniment demonstrativ**, care arată cum apare un eveniment trecut, cu galerie foto.
